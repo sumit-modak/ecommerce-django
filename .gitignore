@@ -1,0 +1,6 @@
+.venv/
+main/__pycache__/
+blog/__pycache__/
+blog/migrations/
+shop/__pycache__/
+shop/migrations/
