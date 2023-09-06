@@ -1,233 +1,97 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Shop</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-        <style>
-            .col-md-3 {
-                display: inline-block;
-                margin-left: -4px;
-            }
+{% extends "shop/base.html" %}
 
-            .col-md-3 img {
-                width: 100%;
-                height: auto;
-            }
+{% block title %}
+Shop
+{% endblock title %}
 
-            body .carousel-indicator li {
-                background-color: blue;
-            }
+{% block style %}
+.col-md-3 {
+    display: inline-block;
+    margin-left: -4px;
+}
 
-            body .carousel-indicators {
-                bottom: 0;
-            }
+.col-md-3 img {
+    width: 255px;
+    height: 355px;
+}
 
-            .carousel-indicators .active {
-                opacity: 1;
-                background-color: blue;
-            }
+body .carousel-indicator li {
+    background-color: blue;
+}
 
-            body .carousel-control-prev-icon,
-            body .carousel-control-next-icon {
-                background-color: blue;
-            }
+body .carousel-indicators {
+    bottom: 0;
+}
 
-            body .no-padding {
-                padding-left: 0;
-                padding-right: 0;
-            }
-        </style>
-    </head>
-    <body>
-        {% load static %}
-    <!-- navigation bar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown
-                </a>
-                <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-            </li>
-            </ul>
-            <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </div>
-        </div>
-    </nav>
-    
-    <div id="demo" class="carousel slide my-3" data-ride="carousel">
+.carousel-indicators .active {
+    opacity: 1;
+    background-color: blue;
+}
+
+body .carousel-control-prev-icon,
+body .carousel-control-next-icon {
+    background-color: blue;
+}
+
+body .no-padding {
+    padding-left: 0;
+    padding-right: 0;
+}
+{% endblock style %}
+
+{% block body %}
+{% load static %}
+<div id="demo" class="carousel slide my-3" data-ride="carousel">
     <ul class="carousel-indicators">
         <li data-target="#demo" data-slide-to="0" class="active"></li>
-        <li data-target="#demo" data-slide-to="1"></li>
-        <li data-target="#demo" data-slide-to="2"></li>
+        {% for i in range %}
+        <li data-target="#demo" data-slide-to="{{i}}"></li>
+        {% endfor %}
     </ul>
 
     <div class="container carousel-inner no-padding">
         <div class="carousel-item active">
-            <div class="col-xs-3 col-sm-3 col-md-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="{% static 'shop/shop_logo.jpg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-3 col-sm-3 col-md-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="{% static 'shop/shop_logo.jpg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-3 col-sm-3 col-md-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="{% static 'shop/shop_logo.jpg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-3 col-sm-3 col-md-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="{% static 'shop/shop_logo.jpg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="carousel-item">
             <div class="col-xs-3 col-sm-3 col-md-3">
                 <div class="card" style="width: 18rem;">
-                    <img src="{% static 'shop/shop_logo.jpg' %}" class="card-img-top" alt="...">
+                    <img src="/media/{{products.0.image}}" class="card-img-top" alt="...">
                     <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <h5 class="card-title">{{products.0.name}}</h5>
+                    <p class="card-text">{{products.0.desc}}</p>
+                    <a href="#" class="btn btn-primary">Add to cart</a>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-3 col-sm-3 col-md-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="{% static 'shop/shop_logo.jpg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-3 col-sm-3 col-md-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="{% static 'shop/shop_logo.jpg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-3 col-sm-3 col-md-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="{% static 'shop/shop_logo.jpg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-        </div>
 
+        {% for i in products|slice:"1:" %}
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <div class="card" style="width: 18rem;">
+                    <img src="/media/{{i.image}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <h5 class="card-title">{{i.name}}</h5>
+                    <p class="card-text">{{i.desc}}</p>
+                    <a href="#" class="btn btn-primary">Add to cart</a>
+                    </div>
+                </div>
+            </div>
+        
+        {% if forloop.counter|divisibleby:3 and not forloop.last %}
+        </div>
         <div class="carousel-item">
-            <div class="col-xs-3 col-sm-3 col-md-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="{% static 'shop/shop_logo.jpg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-3 col-sm-3 col-md-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="{% static 'shop/shop_logo.jpg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-3 col-sm-3 col-md-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="{% static 'shop/shop_logo.jpg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-3 col-sm-3 col-md-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="{% static 'shop/shop_logo.jpg' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
+        {% endif %}
+
+        {% endfor %}
         </div>
     </div>
-    </div>
-
+    
     <a class="carousel-control-prev " href="#demo" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
+        {% comment %} <span class="sr-only">Previous</span> {% endcomment %}
     </a>
     <a class="carousel-control-next" href="#demo" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
+        {% comment %} <span class="sr-only">Next</span> {% endcomment %}
     </a>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-  </body>
-</html>
+{% endblock body %}

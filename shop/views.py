@@ -1,12 +1,16 @@
 from django.shortcuts import render, HttpResponse
+from .models import Product
+from math import ceil
 
 # Create your views here.
 def index(request):
-    # return HttpResponse("Index Shop")
-    return render(request, "shop/index.html")
+    products = Product.objects.all()
+    nSlides = ceil(len(products)/4)
+    params = {"nSlides": nSlides, "range": range(1, nSlides), "products": products}
+    return render(request, "shop/index.html", params)
 
 def about(request):
-    return render(request, ".html")
+    return render(request, "shop/about.html")
 
 def contact(request):
     return render(request, ".html")
