@@ -6,7 +6,10 @@ from math import ceil
 def index(request):
     products = Product.objects.all()
     nSlides = ceil(len(products)/4)
-    params = {"nSlides": nSlides, "range": range(1, nSlides), "products": products}
+    # params = {"nSlides": nSlides, "range": range(1, nSlides), "products": products}
+    allProducts = [[products, range(1, nSlides), nSlides], 
+                   [products, range(1, nSlides), nSlides]]
+    params = {"allProducts": allProducts}
     return render(request, "shop/index.html", params)
 
 def about(request):
