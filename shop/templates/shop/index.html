@@ -2,7 +2,7 @@
 
 {% block title %}
 Shop
-{% endblock title %}
+{% endblock %}
 
 {% block style %}
 .col-md-3 {
@@ -43,10 +43,12 @@ body .no-padding {
     padding-left: 0;
     padding-right: 0;
 }
-{% endblock style %}
+{% endblock %}
 
 {% block body %}
 {% load static %}
+{% load my_tags %}
+
 {% for products, range, nSlides in allProducts %}
 <div id="demo{{forloop.counter}}" class="carousel slide my-3" data-ride="carousel">
     <ul class="carousel-indicators">
@@ -55,7 +57,7 @@ body .no-padding {
         <li data-target="#demo{{forloop.parentloop.counter}}" data-slide-to="{{i}}"></li>
         {% endfor %}
     </ul>
-
+    
     <div class="container carousel-inner no-padding">
         <div class="carousel-item active">
 
@@ -82,7 +84,7 @@ body .no-padding {
                 </div>
             </div>
         
-        {% if forloop.counter|divisibleby:3 and not forloop.last %}
+        {% if forloop.counter|modulo and not forloop.last %}
         </div>
         <div class="carousel-item">
         {% endif %}
@@ -102,4 +104,4 @@ body .no-padding {
 </div>
 {% endfor %}
 
-{% endblock body %}
+{% endblock %}
