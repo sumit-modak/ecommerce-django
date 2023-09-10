@@ -11,7 +11,7 @@ Shop
 }
 
 .col-md-3 img {
-    width: 250px;
+    max-width: 250px;
     max-height: 250px;
 }
 
@@ -124,6 +124,7 @@ body .no-padding {
         }
         // console.log(cart);
         localStorage.setItem('cart', JSON.stringify(cart));
+        document.getElementById('cart').innerHTML = Object.keys(cart).length;
     });
 
 </script>
