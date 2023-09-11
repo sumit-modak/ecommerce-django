@@ -4,3 +4,4 @@ blog/__pycache__/
 blog/migrations/
 shop/__pycache__/
 shop/migrations/
+shop/templatetags/__pycache__/
