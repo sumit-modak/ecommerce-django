@@ -22,6 +22,10 @@ def index(request):
 def cart(request):
     return render(request, "shop/cart.html")
 
+def productView(request, myid):
+    product = Product.objects.filter(id=myid)
+    return render(request, "shop/productView.html", {"product": product[0]})
+
 def about(request):
     return render(request, "shop/about.html")
 
@@ -34,8 +38,5 @@ def tracker(request):
 def search(request):
     return render(request, ".html")
 
-def productView(request):
-    return render(request, ".html")
-
 def checkout(request):
-    return render(request, "productView.html")
+    return render(request, ".html")
