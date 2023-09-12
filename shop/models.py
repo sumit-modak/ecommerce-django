@@ -1,6 +1,5 @@
 from django.db import models
 
-# Create your models here.
 class Product(models.Model):
     pid = models.AutoField 
     name = models.CharField(max_length=63)
@@ -13,3 +12,13 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+class Contact(models.Model):
+    msg_id = models.AutoField
+    name = models.CharField(max_length=63)
+    email = models.CharField(max_length=63)
+    phone = models.IntegerField(default=0)
+    desc = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+    
