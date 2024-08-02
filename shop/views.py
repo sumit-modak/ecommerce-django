@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse
-from .models import Product, Contact, Order
+from .models import Product, Contact, Order, OrderUpdate
 from math import ceil
+import json
 
 def index(request):
     # products = Product.objects.all()
@@ -23,6 +24,7 @@ def cart(request):
     return render(request, "shop/cart.html")
 
 def productView(request, myid):
+    print(request)
     product = Product.objects.filter(id=myid)
     return render(request, "shop/productView.html", {"product": product[0]})
 
@@ -57,11 +59,31 @@ def checkout(request):
                       address=address, landmark=landmark, pincode=pincode,
                       town_city=town_city, state=state, country=country)
         order.save()
+
+        update = OrderUpdate(order_id=order.order_id, update_desc="The order has been placed")
+        update.save()
         return render(request, "shop/checkout.html", {"thank": True, "id": order.order_id})
         
     return render(request, "shop/checkout.html")
 
 def tracker(request):
+    if request.method == "POST":
+        orderID = request.POST.get("orderID", "")
+        emailID = request.POST.get("emailID", "")
+        try:
+            order = Order.objects.filter(order_id=orderID, email=emailID)
+            if len(order) > 0:
+                update = OrderUpdate.objects.filter(order_id=orderID)
+                updates = []
+                for item in updates:
+                    updates.append({"desc": item.update_desc, "time": item.timestamp})
+                    response = json.dumps(updates, default=str)
+                return HttpResponse(response)
+            else:
+                return HttpResponse('{}')
+        except Exception as e:
+            return HttpResponse('{}')
+
     return render(request, "shop/tracker.html")
 
 def search(request):
